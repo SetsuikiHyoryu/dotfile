@@ -26,16 +26,14 @@ require('lazy').setup({
 
   -- Git related plugins
   'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
-
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  'tpope/vim-rhubarb', -- like hub
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
+
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
       { 'williamboman/mason.nvim', config = true },
@@ -49,7 +47,6 @@ require('lazy').setup({
       'folke/neodev.nvim',
 
       -- 格式化工具
-      -- 'dense-analysis/ale',
       'jose-elias-alvarez/null-ls.nvim'
     },
   },
@@ -76,6 +73,7 @@ require('lazy').setup({
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
+
     opts = {
       -- See `:help gitsigns.txt`
       signs = {
@@ -85,6 +83,7 @@ require('lazy').setup({
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
+
       on_attach = function(bufnr)
         vim.keymap.set('n', '[c', require('gitsigns').prev_hunk, { buffer = bufnr, desc = 'Go to Previous Hunk' })
         vim.keymap.set('n', ']c', require('gitsigns').next_hunk, { buffer = bufnr, desc = 'Go to Next Hunk' })
@@ -92,6 +91,8 @@ require('lazy').setup({
       end,
     },
   },
+
+  'Mofiqul/vscode.nvim',
 
   {
     -- Theme inspired by Atom
@@ -219,6 +220,7 @@ vim.o.termguicolors = true
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
@@ -281,6 +283,7 @@ require('nvim-treesitter.configs').setup {
       node_decremental = '<M-space>',
     },
   },
+
   textobjects = {
     select = {
       enable = true,
@@ -295,6 +298,7 @@ require('nvim-treesitter.configs').setup {
         ['ic'] = '@class.inner',
       },
     },
+
     move = {
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
@@ -315,6 +319,7 @@ require('nvim-treesitter.configs').setup {
         ['[]'] = '@class.outer',
       },
     },
+
     swap = {
       enable = true,
       swap_next = {
