@@ -1,6 +1,7 @@
 -- require 'custom.config.vscode'
 require 'custom.config.null-ls'
 require 'custom.config.markdown'
+require 'custom.config.java'
 require 'custom.config.tab'
 require 'custom.config.onedark'
 require 'custom.config.highlight'

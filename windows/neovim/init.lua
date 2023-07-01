@@ -178,7 +178,7 @@ require('lazy').setup({
 -- NOTE: You can change these options as you wish!
 
 -- Make line numbers default
-vim.wo.number = true
+vim.o.number = true
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -188,7 +188,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+vim.o.signcolumn = 'yes'
 
 -- Decrease update time
 vim.o.timeout = true
