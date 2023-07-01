@@ -26,16 +26,14 @@ require('lazy').setup({
 
   -- Git related plugins
   'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
-
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  'tpope/vim-rhubarb', -- like hub
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
+
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
       { 'williamboman/mason.nvim', config = true },
@@ -49,7 +47,6 @@ require('lazy').setup({
       'folke/neodev.nvim',
 
       -- 格式化工具
-      -- 'dense-analysis/ale',
       'jose-elias-alvarez/null-ls.nvim'
     },
   },
@@ -76,6 +73,7 @@ require('lazy').setup({
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
+
     opts = {
       -- See `:help gitsigns.txt`
       signs = {
@@ -85,6 +83,7 @@ require('lazy').setup({
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
+
       on_attach = function(bufnr)
         vim.keymap.set('n', '[c', require('gitsigns').prev_hunk, { buffer = bufnr, desc = 'Go to Previous Hunk' })
         vim.keymap.set('n', ']c', require('gitsigns').next_hunk, { buffer = bufnr, desc = 'Go to Next Hunk' })
@@ -141,6 +140,7 @@ require('lazy').setup({
     -- NOTE: If you are having trouble with this installation,
     --       refer to the README for telescope-fzf-native for more instructions.
     build = 'make',
+
     cond = function()
       return vim.fn.executable 'make' == 1
     end,
@@ -155,31 +155,11 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    opts = {}
-  },
-
-  -- markdown-preview
-  {
-    "iamcco/markdown-preview.nvim",
-
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-
-    ft = { "markdown" },
-  },
-
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
   -- require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.debug',
 
   -- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
@@ -194,7 +174,7 @@ require('lazy').setup({
 -- NOTE: You can change these options as you wish!
 
 -- Make line numbers default
-vim.wo.number = true
+vim.o.number = true
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -204,7 +184,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+vim.o.signcolumn = 'yes'
 
 -- Decrease update time
 vim.o.timeout = true
@@ -219,6 +199,7 @@ vim.o.termguicolors = true
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
@@ -281,6 +262,7 @@ require('nvim-treesitter.configs').setup {
       node_decremental = '<M-space>',
     },
   },
+
   textobjects = {
     select = {
       enable = true,
@@ -295,6 +277,7 @@ require('nvim-treesitter.configs').setup {
         ['ic'] = '@class.inner',
       },
     },
+
     move = {
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
@@ -315,6 +298,7 @@ require('nvim-treesitter.configs').setup {
         ['[]'] = '@class.outer',
       },
     },
+
     swap = {
       enable = true,
       swap_next = {
@@ -470,7 +454,7 @@ cmp.setup {
   },
 }
 
-require 'config'
+require 'custom.config'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

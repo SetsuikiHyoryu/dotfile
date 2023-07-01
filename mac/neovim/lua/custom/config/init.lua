@@ -7,8 +7,6 @@ require 'custom.config.onedark'
 require 'custom.config.highlight'
 
 -- [[自定义设置]]
--- Powershell 中 Ctrl + Z 程序会失去响应，替换为返回键
-vim.keymap.set('n', '<C-Z>', 'u', { silent = true })
 -- 启用光标行
 vim.o.cursorline = true
 -- 隐藏命令行（在输入命令时会临时覆盖状态栏）
