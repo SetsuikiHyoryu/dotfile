@@ -1,4 +1,4 @@
-require 'custom.config.lspconfig'
+require 'custom.config.lsp'
 require 'custom.config.nvim-cmp'
 require 'custom.config.null-ls'
 -- require 'custom.config.java'
