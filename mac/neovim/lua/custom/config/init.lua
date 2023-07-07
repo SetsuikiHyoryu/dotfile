@@ -1,4 +1,4 @@
-require 'custom.config.lspconfig'
+require 'custom.config.lsp'
 require 'custom.config.nvim-cmp'
 require 'custom.config.null-ls'
 -- require 'custom.config.java'
@@ -41,17 +41,6 @@ vim.o.termguicolors = true
 vim.o.cursorline = true
 -- 隐藏命令行（在输入命令时会临时覆盖状态栏）
 -- vim.o.cmdheight = 0
-
--- 保存时根据 lsp 自动整理代码
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = '*',
-
-  callback = function(_)
-    vim.lsp.buf.format()
-  end,
-
-  desc = 'Format current buffer with LSP on save.'
-})
 
 -- [[ nvim-tree ]]
 vim.keymap.set('n', '<leader>t', ':NvimTreeFindFileToggle<CR>', { silent = true })
