@@ -1,7 +1,6 @@
 require 'custom.config.lsp'
 require 'custom.config.nvim-cmp'
 require 'custom.config.null-ls'
--- require 'custom.config.java'
 require 'custom.config.tab'
 require 'custom.config.telescope'
 require 'custom.config.treesitter'
