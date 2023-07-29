@@ -96,5 +96,8 @@ mason_lspconfig.setup_handlers {
       -- 使用 Volar 接管 Typescript
       filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
     }
-  end
+  end,
+
+  -- 使用 nvim-jdtls 时放开下文以禁用 lsp-config 的 jdtls 配置
+  -- ['jdtls'] = function() end
 }

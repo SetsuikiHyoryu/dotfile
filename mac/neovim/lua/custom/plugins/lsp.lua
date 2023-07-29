@@ -17,6 +17,8 @@ return {
     },
   },
 
+  { 'mfussenegger/nvim-jdtls' },
+
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
