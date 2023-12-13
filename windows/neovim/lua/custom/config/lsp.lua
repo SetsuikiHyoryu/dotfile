@@ -89,14 +89,18 @@ mason_lspconfig.setup_handlers {
   end,
 
   ['volar'] = function()
+    -- volar 生效的 root_dir 为 package.json 所在的目录
     lspconfig.volar.setup {
       capabilities = common_handler_config.capabilities,
       on_attach = common_handler_config.on_attach,
 
       -- 使用 Volar 接管 Typescript
-      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
+      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json', 'html' },
     }
   end,
+
+  -- 使用 volar 托管时需要不启用 tsserver
+  ['tsserver'] = function() end,
 
   -- 使用 nvim-jdtls 时放开下文以禁用 lsp-config 的 jdtls 配置
   -- ['jdtls'] = function() end
